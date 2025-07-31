@@ -2,14 +2,14 @@ import { WeatherData } from "./types";
 
 export const FetchWeatherByCity = async (
   city: string
-): Promise<WeatherData> => {
+): Promise<WeatherData | null> => {
   try {
     console.log("Fetching weather for city:", city);
     const geores = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     );
     const geoData = await geores.json();
-    console.log("sdfsdf", geoData);
+
     if (!geoData.results || geoData.results.length === 0) return null;
     const { latitude, longitude, name, country } = geoData.results[0];
 
