@@ -1,9 +1,22 @@
-import Image from "next/image";
+"use client"
+
+import { useState } from "react";
+import SearchBox from "@/components/weather/SearchBox";
+import WeatherCard from "@/components/weather/WeatherCard";
+import { WeatherData } from "@/lib/types";
 
 export default function Home() {
+ 
+  const [weather, setWeather] = useState<WeatherData | null>(null);
+
   return (
-    <div className="font-sans grid text-black bg-amber-200 grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-     
-    </div>
-  );
+    <main className="min-h-screen bg-gradient-to-br from-gray-200 to-gray-400 flex flex-col items-center justify-center p-6">
+      <h1 className="text-4xl font-bold text-gray-500 mb-6">🌤 Weather App</h1>
+      <SearchBox onweatherfetched={setWeather} />
+      <div className="mt-8">
+      {weather && <WeatherCard  data={weather} />}
+
+      </div>
+    </main>
+  ); 
 }
