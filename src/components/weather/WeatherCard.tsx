@@ -6,8 +6,8 @@ function WeatherCard({data,cardshimmer}:{data: WeatherData; cardshimmer: boolean
   <div>
     {
       cardshimmer ?( 
-          <div className="w-2xl rounded-2xl m-4 p-2 border  border-gray-100 h-80 bg-gray-300  "></div>
-      ): (<div className='w-2xl p-5 rounded-2xl m-4  border border-gray-100 h-auto bg-gray-800 text-teal-50'>
+          <div className="md:w-2xl w-sm  rounded-2xl m-4 p-2 border  border-gray-100 h-80 bg-gray-300  "></div>
+      ): (<div className='md:w-2xl p-5 w-sm rounded-2xl m-4  border border-gray-100 h-auto bg-gray-800 text-teal-50'>
   <h2 className="text-2xl font-bold">{data.city}, {data.country}</h2>
         <p className="text-5xl text-blue-400  font-bold mt-3">{data.temperature}°C</p>
         <div className='w-full h-0.5 mt-2.5  bg-blue-600'></div>
