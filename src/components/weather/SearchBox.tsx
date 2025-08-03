@@ -3,21 +3,32 @@
 import React, { useState } from 'react'
 import { WeatherData } from '@/lib/types';
 import { FetchWeatherByCity } from '@/lib/api';
-function SearchBox({onweatherfetched}:{onweatherfetched: (data: WeatherData) => void}) {
+import { Dispatch, SetStateAction } from "react";
+function SearchBox({
+  onweatherfetched,
+  cardloading,
+}: {
+  onweatherfetched: (data: WeatherData) => void;
+  cardloading: Dispatch<SetStateAction<boolean>>;
+}) {
     const [city, setcity] = useState("");
     const handleSearch =async ()=>{
         if (!city){
             alert("Please enter a city name");
             return;
         };
+        cardloading(true);
         const data = await FetchWeatherByCity(city);
+
         console.log(data)
+     
         if (data) {
             onweatherfetched(data);
             setcity("");
         } else {
             alert("City not found");
         }
+        cardloading(false);
     }
   return (
     <div className=' flex m-2 gap-2'>

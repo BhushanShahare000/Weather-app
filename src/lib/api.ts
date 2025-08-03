@@ -4,7 +4,6 @@ export const FetchWeatherByCity = async (
   city: string
 ): Promise<WeatherData | null> => {
   try {
-    console.log("Fetching weather for city:", city);
     const geores = await fetch(
       `https://geocoding-api.open-meteo.com/v1/search?name=${city}`
     );
